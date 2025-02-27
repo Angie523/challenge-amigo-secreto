@@ -1,29 +1,29 @@
+let amigo = [];
 
+function agregarAmigo() {
+    let imputAmigo = document.getElementById("amigo");
+    let nombreAmigo = imputAmigo.value;
+    
+    if (!nombreAmigo) {
+      alert("debes ingresar un nombre");
+      return;
+    }
+    amigo.push(nombreAmigo);
+    imputAmigo.value = "";
+    imputAmigo.focus();
+    renderizarAmigos();
+}
+ 
+function renderizarAmigos(){
+    let listaAmigos = document.getElementById("listaAmigos");
+    listaAmigos.innerHTML = "";
 
-
-
-
-function sortearAmigo() {
-    if (amigos.length !== 0) {
-       let amigoAleatorio = Math.floor(Math.random() * amigos.length);
-       
-       let amigo = amigos[amigoAleatorio];
-
-       let li = document.createElement('li');
-
-       li.textContent = `Tu amigo secreto es ${amigo}`;
-
-       document.getElementById('resultado').append(li);
-
-       eliminarAmigoDeListaYArray(amigo);
-
-       setTimeout(() => {
-         li.remove();
-        },4000);
-        actualizarBoton();
-    } else {
-      actualizarBoton();
-        alert("Por favor, ingresa un nombre válido.");
-        return;
+    for(let i = 0; i < amigo.length; i++){
+        let item = document.createElement("li");
+        item.textContent = amigo[i];
+        listaAmigos.appendChild(item);
     }
 }
+
+
+
